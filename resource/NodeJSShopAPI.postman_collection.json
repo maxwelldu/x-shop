@@ -1,0 +1,620 @@
+{
+	"id": "303ca84a-3714-a99f-068c-edef2593823a",
+	"name": "NodeJSShopAPI",
+	"description": "zhenfan商城API",
+	"order": [
+		"bb4aa8b2-032c-0a00-0d45-3fb3d68daa75",
+		"1282d91b-56b4-d85d-13c9-0a2feb2b06bf",
+		"a3595fee-a714-e194-a594-a74fa07b2c84",
+		"705fd050-8ca1-5859-429c-155a118d8ad8",
+		"d95c6370-b278-21e9-92a3-edc9178c1e82",
+		"0b5d0a08-7bf0-4501-2ca2-21bf342eb543",
+		"0a94441d-1a99-b63f-85d6-6c488c3bbd29",
+		"70e69ecf-5c23-425b-8866-8d08264529b0",
+		"6fc61de5-90df-62d3-52c2-43e8655b3702",
+		"12175e29-3bef-f63d-cd62-f1e5180e7a31",
+		"42789f18-8e8f-a888-cd0e-f13e7a624e6d",
+		"a3a78069-b01e-0905-6315-f2d69d4e27c1",
+		"3d7fc1e4-5acf-0512-783c-2594dde1daa4",
+		"cd13b550-2fe3-0715-2708-31ad97ed7622",
+		"52905f0c-fe82-cbda-5e89-674cce1cec41"
+	],
+	"folders": [],
+	"timestamp": 1508427750630,
+	"owner": "39500",
+	"public": false,
+	"requests": [
+		{
+			"id": "0a94441d-1a99-b63f-85d6-6c488c3bbd29",
+			"headers": "Cookie: userId=100000077;userName=admin\n",
+			"headerData": [
+				{
+					"key": "Cookie",
+					"value": "userId=100000077;userName=admin",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/users/cartList",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508430158238,
+			"name": "查看购物车",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		},
+		{
+			"id": "0b5d0a08-7bf0-4501-2ca2-21bf342eb543",
+			"headers": "Cookie: userId=100000077;userName=admin\n",
+			"headerData": [
+				{
+					"key": "Cookie",
+					"value": "userId=100000077;userName=admin",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/users/getCartCount",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508430135948,
+			"name": "获取购物车数量",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		},
+		{
+			"id": "12175e29-3bef-f63d-cd62-f1e5180e7a31",
+			"headers": "Cookie: userId=100000077;userName=admin\n",
+			"headerData": [
+				{
+					"key": "Cookie",
+					"value": "userId=100000077;userName=admin",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/users/editCheckAll",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "checkAll",
+					"value": "1",
+					"description": "1全选 0全不选",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508430896243,
+			"name": "购物车全选或全不选",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		},
+		{
+			"id": "1282d91b-56b4-d85d-13c9-0a2feb2b06bf",
+			"headers": "Cookie: userId=100000077;userName=admin\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Cookie",
+					"value": "userId=100000077;userName=admin",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/goods/addCart",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "productId",
+					"value": "201710006",
+					"description": "商品ID",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508430827957,
+			"name": "添加到购物车",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		},
+		{
+			"id": "3d7fc1e4-5acf-0512-783c-2594dde1daa4",
+			"headers": "Cookie: userId=100000077;userName=admin\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Cookie",
+					"value": "userId=100000077;userName=admin",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/users/delAddress",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "addressId",
+					"value": "100001",
+					"description": "地址ID",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508430918418,
+			"name": "删除地址",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		},
+		{
+			"id": "42789f18-8e8f-a888-cd0e-f13e7a624e6d",
+			"headers": "Cookie: userId=100000077;userName=admin\n",
+			"headerData": [
+				{
+					"key": "Cookie",
+					"value": "userId=100000077;userName=admin",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/users/addressList",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508430346296,
+			"name": "地址列表",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		},
+		{
+			"id": "52905f0c-fe82-cbda-5e89-674cce1cec41",
+			"headers": "Cookie: userId=100000077;userName=admin\n",
+			"headerData": [
+				{
+					"key": "Cookie",
+					"value": "userId=100000077;userName=admin",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/users/orderDetail?orderId=6224201710192229104",
+			"queryParams": [
+				{
+					"key": "orderId",
+					"value": "6224201710192229104",
+					"equals": true,
+					"description": "订单ID",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508430542308,
+			"name": "订单详情",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		},
+		{
+			"id": "6fc61de5-90df-62d3-52c2-43e8655b3702",
+			"headers": "Cookie: userId=100000077;userName=admin\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Cookie",
+					"value": "userId=100000077;userName=admin",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/users/cartEdit",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "productId",
+					"value": "201710017",
+					"description": "产品ID",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "checked",
+					"value": "1",
+					"description": "是否选中",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "productNum",
+					"value": "3",
+					"description": "产品数量",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508430880018,
+			"name": "购物车编辑",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		},
+		{
+			"id": "705fd050-8ca1-5859-429c-155a118d8ad8",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/users/login",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "userName",
+					"value": "admin",
+					"description": "用户名",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "userPwd",
+					"value": "123456",
+					"description": "密码",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508430839593,
+			"name": "登录",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		},
+		{
+			"id": "70e69ecf-5c23-425b-8866-8d08264529b0",
+			"headers": "Cookie: userId=100000077;userName=admin\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Cookie",
+					"value": "userId=100000077;userName=admin",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/users/cartDel",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "productId",
+					"value": "201710017",
+					"description": "产品ID",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508430854452,
+			"name": "购物车删除",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		},
+		{
+			"id": "a3595fee-a714-e194-a594-a74fa07b2c84",
+			"headers": "Cookie: userId=100000077;userName=admin\n",
+			"headerData": [
+				{
+					"key": "Cookie",
+					"value": "userId=100000077;userName=admin",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/users/checkLogin",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508430117376,
+			"name": "检查是否登录",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		},
+		{
+			"id": "a3a78069-b01e-0905-6315-f2d69d4e27c1",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nCookie: userId=100000077;userName=admin\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Cookie",
+					"value": "userId=100000077;userName=admin",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/users/setDefault",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "addressId",
+					"value": "100001",
+					"description": "地址ID",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508430911100,
+			"name": "设置默认地址",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		},
+		{
+			"id": "bb4aa8b2-032c-0a00-0d45-3fb3d68daa75",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3000/goods/list?page=1&pageSize=8&sort=1&priceLevel=all",
+			"queryParams": [
+				{
+					"key": "page",
+					"value": "1",
+					"equals": true,
+					"description": "第几页",
+					"enabled": true
+				},
+				{
+					"key": "pageSize",
+					"value": "8",
+					"equals": true,
+					"description": "一页的大小",
+					"enabled": true
+				},
+				{
+					"key": "sort",
+					"value": "1",
+					"equals": true,
+					"description": "价格升序1 价格降序-1",
+					"enabled": true
+				},
+				{
+					"key": "priceLevel",
+					"value": "all",
+					"equals": true,
+					"description": "价格区间all, 0, 1, 2, 3",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508429491856,
+			"name": " 首页商品列表接口",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		},
+		{
+			"id": "cd13b550-2fe3-0715-2708-31ad97ed7622",
+			"headers": "Cookie: userId=100000077;userName=admin\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Cookie",
+					"value": "userId=100000077;userName=admin",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/users/payMent",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "addressId",
+					"value": "100001",
+					"description": "地址ID",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "orderTotal",
+					"value": "100",
+					"description": "订单总价",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508430928933,
+			"name": "支付",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		},
+		{
+			"id": "d95c6370-b278-21e9-92a3-edc9178c1e82",
+			"headers": "Cookie: userId=100000077;userName=admin\n",
+			"headerData": [
+				{
+					"key": "Cookie",
+					"value": "userId=100000077;userName=admin",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/users/logout",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508430079870,
+			"name": "退出",
+			"description": "",
+			"collectionId": "303ca84a-3714-a99f-068c-edef2593823a",
+			"responses": []
+		}
+	]
+}
