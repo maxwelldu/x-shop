@@ -421,3 +421,23 @@ export default {
 在main.js当中使用：
 import {currency} from './util/currency'
 Vue.filter('currency', currency)
+
+切换分支时报错：error: cannot stat ‘file’: Permission denied
+请把编辑器给关闭，浏览器关闭，然后再尝试切换
+
+.gitignore里面的内容：
+```
+.DS_Store
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+```
