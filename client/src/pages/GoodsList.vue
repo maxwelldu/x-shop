@@ -1,6 +1,5 @@
 <template>
     <div>
-      <nav-header></nav-header>
       <nav-bread>
         <span>热门商品</span>
       </nav-bread>
@@ -73,7 +72,6 @@
         </div>
       </modal>
       <div class="md-overlay" v-show="overLayFlag" @click.stop="closePop"></div>
-      <nav-footer></nav-footer>
     </div>
 </template>
 
@@ -91,7 +89,7 @@ export default {
       sortFlag: true,       // 排序标记，true是升序，false降序
       page: 1,              // 当前第一页
       pageSize: 8,          // 一页8条
-      busy: true,           // 是否可以继续加载，false表示可以，true表示不行
+      busy: false,           // 是否可以继续加载，false表示可以，true表示不行
       loading: false,       // 是否正在加载
       mdShow: false,        // 登录模态框是否显示
       mdShowCart: false,    // 购物车模态框是否显示
@@ -122,7 +120,7 @@ export default {
     this.getGoodsList()
   },
   methods: {
-    getGoodsList () {
+    getGoodsList (loadmoreFlag) {
       var params = {
         page: this.page,
         pageSize: this.pageSize,
@@ -133,14 +131,38 @@ export default {
       this.$http.get('/goods/list', {params})
       .then(res => {
         res = res.data
+        // 正在加载不显示
         this.loading = false
+        // 数据请求正常时
         if (res.status === '0') {
-          this.goodsList = res.result.list
+          // 如果是加载更多的情况
+          if (loadmoreFlag) {
+            // 将结果和之前的商品数据合并
+            this.goodsList = this.goodsList.concat(res.result.list)
+            // 如果返回的数量比一页的数量小，则不允许再请求
+            this.busy = res.result.count < this.pageSize
+          } else {
+            this.goodsList = res.result.list
+            this.busy = false
+          }
         }
       })
     },
+    sortGoods () {
+      this.sortFlag = !this.sortFlag
+      this.page = 1
+      this.getGoodsList()
+    },
+    setPriceFilter (index) {
+      this.busy = false
+      this.priceChecked = index
+      this.page = 1
+      this.getGoodsList()
+    },
     loadMore () {
-
+      this.busy = true
+      this.page++
+      this.getGoodsList(true)
     },
     closeModal () {
     }

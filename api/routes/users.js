@@ -45,7 +45,7 @@ router.post("/login", (req,res,next) => {
 
 //2.登出接口
 router.post("/logout", (req,res,next) => {
-  //清空cookie的用户ID,设置过期时间为上一秒
+  //清空cookie的用户ID,设置过期时间为上一毫秒
   res.cookie("userId","",{
     maxAge:-1
   });

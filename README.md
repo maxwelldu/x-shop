@@ -31,6 +31,7 @@ dev分支是开发分支，是指可以随时运行进行测试的较稳定的�
 `mongod`
 
 - 导入测试数据(将resource目录拷贝到项目的根目录，为了方便导入的时候写相对路径)
+-d是指定数据库是谁，-c是指定集合，后面跟着的一个相对路径
 `mongoimport -d=xshop -c=users ./resource/dumall-users`
 `mongoimport -d=xshop -c=goods ./resource/dumall-goods`
 进行mongo命令行查看
@@ -441,3 +442,37 @@ yarn-error.log*
 *.njsproj
 *.sln
 ```
+
+排查错误：
+排错：检查网络请求是否OK， node ./bin/www启动api项目看是否正常；如果网络正常检查一下api是否能返回数据？如果能返回数据则是JS存数据的问题
+如果api返回的数据为空，则检查mongodb数据库中是否有数据；如果有检查一下代码中使用的数据库是否统一
+mongo命令行查看：
+mongo
+show dbs;
+use xshop;
+show collections;
+db.goods.find();
+
+如果没有数据则需要mongoimport导入数据
+
+排序功能：
+methods: {
+  ...
+  sortGoods () {
+    this.sortFlag = !this.sortFlag
+    this.getGoodsList()
+  },
+}
+
+价格区间功能：
+methods: {
+  ...
+  setPriceFilter (index) {
+    this.priceChecked = index
+    this.page = 1
+    this.getGoodsList()
+  },
+}
+
+请求方式，请求地址，传递参数，参数的默认值，参数的规则，参数的可用取值，响应的数据，响应的数据的状态码的意义，响应的正常数据及字段的意义，响应的错误数据及字段的意义，响应异常需要自己处理try catch
+如果返回的数据不够用，需要看是否能够通过已有的数据拼装，如果可以自己再装一个；如果发现这个字段你没有办法通过已有的数据拼装那就需要请大哥帮忙添加一下

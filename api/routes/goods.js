@@ -5,18 +5,24 @@ let User    = require('../models/user');
 
 //1.查询商品列表数据
 router.get("/list", (req,res,next) => {
-  let page        = parseInt(req.param("page"));      //获取当前页码
-  let pageSize    = parseInt(req.param("pageSize"));  //获取页的大小
-  let priceLevel  = req.param("priceLevel");          //值为all,0,1,2,3 all就是价格不筛选，0表示0-100，1表示100-500，2表示500-1000，3表示1000-5000
-  let sort        = req.param("sort");                //排序，1表示升序，-1表示降序
+  let page        = parseInt(req.param("page", 1));      //获取当前页码
+  let pageSize    = parseInt(req.param("pageSize", 10));  //获取页的大小
+  let priceLevel  = req.param("priceLevel", 'all');          //值为all,0,1,2,3 all就是价格不筛选，0表示0-100，1表示100-500，2表示500-1000，3表示1000-5000
+  let sort        = req.param("sort", 1);                //排序，1表示升序，-1表示降序
   let skip        = (page-1)*pageSize;                //计算需要跳过多少条
   let params      = {};                               //查询时候的过滤参数
-  if(priceLevel!='all'){                              //不是查所有的就需要拼装一下条件
+  // 限制一下priceLevel只能是all, 0, 1, 2, 3
+  let priceLevelLimit = ['all', '0', '1', '2', '3'];
+  // 如果传递的值不在以上这个范围则设置一个默认值
+  if (!priceLevelLimit.includes(priceLevel)) {
+    priceLevel = 'all';
+  }
+  if(priceLevel !== 'all'){                              //不是查所有的就需要拼装一下条件
     let priceItem = [[0,100],[100,500],[500,1000],[1000,5000]];
     params = {
-      salePrice:{
-        $gt:priceItem[priceLevel][0],
-        $lte:priceItem[priceLevel][1]
+      salePrice: {
+        $gt: priceItem[priceLevel][0],
+        $lte: priceItem[priceLevel][1]
       }
     }
   }
@@ -25,7 +31,7 @@ router.get("/list", (req,res,next) => {
     .sort({'salePrice':sort})
     .skip(skip)
     .limit(pageSize)
-    .exec((err,doc) => {
+    .exec((err, doc) => {
       if(err){
         return res.json({
           status:'1',
@@ -33,11 +39,11 @@ router.get("/list", (req,res,next) => {
         });
       }
       return res.json({
-          status:'0',
-          msg:'',
-          result:{
-              count:doc.length,
-              list:doc
+          status: '0',
+          msg: '',
+          result: {
+              count: doc.length,
+              list: doc
           }
       });
   })

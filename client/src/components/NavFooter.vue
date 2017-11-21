@@ -12,15 +12,9 @@
           </div>
           <div class="footer__secondary__nav">
             <span>Copyright © 2017 Dumall All Rights Reserved.</span>
-            <a href="#">
-              关于我们
-            </a>
-            <a href="#">
-              团队 &amp; 招聘
-            </a>
-            <a href="#">
-              协议 
-            </a>
+            <a href="#"> 关于我们 </a>
+            <a href="#"> 团队 &amp; 招聘 </a>
+            <a href="#"> 协议 </a>
           </div>
         </div>
       </div>
