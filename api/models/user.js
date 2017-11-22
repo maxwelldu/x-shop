@@ -11,8 +11,8 @@ let userSchema = new mongoose.Schema({
       "productName":String,   //产品名称
       "salePrice":String,     //产品价格
       "productImage":String,  //产品图片
-      "checked":String,       //是否选中
-      "productNum":String     //产品数量
+      "checked":String,       //用户是否选中准备结算
+      "productNum":String     //购买的产品数量
     }
   ],
   "addressList":[             //地址列表

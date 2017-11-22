@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "pm2 start ./bin/www",
+    "stop": "pm2 kill",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

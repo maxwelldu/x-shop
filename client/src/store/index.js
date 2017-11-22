@@ -23,7 +23,7 @@ export default new Vuex.Store({
     // 更新购物车数量, cartCount是购物车的数量
     updateCartCount (state, cartCount) {
       // 将购物车的数量递增
-      state.cartCount += cartCount
+      state.cartCount += Number.parseInt(cartCount)
     },
     // 清空购物车数量
     clearCartCount (state) {

@@ -51,7 +51,13 @@ router.get("/list", (req,res,next) => {
 
 //2.加入到购物车
 router.post("/addCart", (req,res,next) => {
-  let userId = req.cookies.userId,productId = req.body.productId;
+  let userId = req.cookies.userId, productId = req.body.productId;
+  if (!productId) {
+    return res.json({
+      status: "3",
+      msg: "请求参数productId没提供"
+    })
+  }
   User.findOne({userId}, (err,userDoc) => {
     if(err){
       return res.json({

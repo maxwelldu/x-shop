@@ -98,6 +98,7 @@ export default{
       this.$http.get('/users/checkLogin').then(response => {
         var res = response.data
         if (res.status === '0') {
+          this.getCartCount()
           this.$store.commit('updateUserInfo', res.result)
           this.loginModalFlag = false
         } else {
@@ -139,7 +140,9 @@ export default{
     getCartCount () {
       this.$http.get('users/getCartCount').then(res => {
         res = res.data
-        this.$store.commit('updateCartCount', res.result)
+        if (res.status === '0') {
+          this.$store.commit('updateCartCount', res.result)
+        }
       })
     }
   }
