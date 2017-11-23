@@ -261,7 +261,42 @@ router.post("/setDefault", (req,res,next) => {
     })
   });
 });
+router.post("/addAddress", (req, res) => {
+  let { userId } = req.cookies
+  let { userName, streetName, postCode, tel, isDefault } = req.body
+  let addressId = (new Date()).getTime() + parseInt(Math.random() * 9999) + parseInt(Math.random() * 9999)
+  User.findOne({ userId }, (err, doc) => {
+    console.log(doc)
+    if (err) {
+      return res.json({
+        status: '1',
+        msg: err.message
+      })
+    }
+    doc.addressList.push({
+      addressId,
+      userName,
+      streetName,
+      postCode,
+      tel,
+      isDefault
+    })
+    doc.save((err, doc) => {
+      if (err) {
+        return res.json({
+          status: '1',
+          msg: err.message
+        })
+      }
+      res.json({
+        status: '0',
+        msg: '添加收货地址成功'
+      })
 
+    })
+  })
+
+})
 //11.删除地址接口
 router.post("/delAddress", (req,res,next) => {
   let userId = req.cookies.userId,addressId = req.body.addressId;
@@ -309,7 +344,7 @@ router.post("/payMent", (req,res,next) => {
     })
     //获取用户购物车的购买商品
     doc.cartList.filter((item)=>{
-     if(item.checked=='1'){
+     if(item.checked === '1'){
        goodsList.push(item);
      }
     });
@@ -320,7 +355,7 @@ router.post("/payMent", (req,res,next) => {
 
     let sysDate = sd.format(new Date(), 'yyyyMMddhhmmss');
     let createDate = sd.format(new Date(), 'yyyy-MM-dd hh:mm:ss');
-    let orderId = platform+r1+sysDate+r2;
+    let orderId = platform + r1 + sysDate + r2;
     let order = {
       orderId,
       orderTotal,

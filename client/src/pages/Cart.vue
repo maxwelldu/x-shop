@@ -169,7 +169,7 @@ export default {
       return count
     },
     totalPrice () {
-      let sum = 0;
+      let sum = 0
       this.cartList.forEach(item => {
         if (parseInt(item.checked) === 1) {
           sum += parseFloat(item.salePrice) * parseInt(item.productNum)
@@ -183,6 +183,9 @@ export default {
       this.$http.get('/users/cartList')
       .then(res => {
         res = res.data
+        res.result.forEach(item => {
+          item.checked = parseInt(item.checked)
+        })
         this.cartList = res.result
       })
     },
@@ -216,7 +219,7 @@ export default {
       } else {
         item.checked = item.checked === 1 ? 0 : 1
       }
-      let { productId, productNum,checked } = item
+      let { productId, productNum, checked } = item
       this.$http.post('/users/cartEdit', { productId, productNum, checked })
       .then(res => {
         res = res.data
@@ -241,7 +244,11 @@ export default {
       })
     },
     checkOut () {
-
+      if (this.checkedCount > 0) {
+        this.$router.push({
+          path: '/address'
+        })
+      }
     }
   }
 }

@@ -22,7 +22,7 @@ let userSchema = new mongoose.Schema({
       "streetName": String,   //街道名称
       "postCode": Number,     //邮编
       "tel": Number,          //电话
-      "isDefault": Boolean    //是否是默认
+      "isDefault": { type: Boolean, default: false }   //是否是默认
     }
   ]
 });
