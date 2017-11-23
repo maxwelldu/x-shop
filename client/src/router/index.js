@@ -9,6 +9,8 @@ import GoodsDetail from '@/pages/GoodsDetail'
 import Cart from '@/pages/Cart'
 // 引入地址组件
 import Address from '@/pages/Address'
+// 引入订单列表组件
+import Orders from '@/pages/Orders'
 // 引入订单确认组件
 import OrderConfirm from '@/pages/OrderConfirm'
 // 引入订单成功组件
@@ -39,6 +41,11 @@ export default new Router({
       path: '/address',
       name: 'Address',
       component: Address
+    },
+    {
+      path: '/orders',
+      name: 'Orders',
+      component: Orders
     },
     {
       path: '/orderConfirm',

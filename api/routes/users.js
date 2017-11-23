@@ -373,7 +373,7 @@ router.post("/payMent", (req,res,next) => {
     let r2 = Math.floor(Math.random()*10);
 
     let sysDate = sd.format(new Date(), 'yyyyMMddhhmmss');
-    let createDate = sd.format(new Date(), 'yyyy-MM-dd hh:mm:ss');
+    let createDate = sd.format(new Date(), 'YYYY-MM-DD hh:mm:ss');
     let orderId = platform + r1 + sysDate + r2;
     let order = {
       orderId,
@@ -405,6 +405,43 @@ router.post("/payMent", (req,res,next) => {
     });
   });
 });
+router.post('/cancelOrder', (req, res) => {
+  let userId = req.cookies.userId
+  let orderId = req.body.orderId
+  User.update({userId, "orderList.orderId": orderId},{
+    "orderList.$.orderStatus": "0"
+  }, (err,doc) => {
+    if(err){
+      return res.json({
+        status:'1',
+        msg:err.message,
+        result:''
+      });
+    }
+    return res.json({
+      status:'0',
+      msg:'',
+      result:'suc'
+    });
+  })
+})
+// 查看订单列表
+router.get('/orders', (req, res) => {
+  let userId = req.cookies.userId
+  User.findOne({ userId }, (err, doc) => {
+    if(err){
+      return res.json({
+         status:'1',
+         msg:err.message,
+         result:''
+      });
+    }
+    res.json({
+      status: '0',
+      result: doc.orderList
+    })
+  })
+})
 //13.根据订单Id查询订单信息
 router.get("/orderDetail", (req,res,next) => {
   let userId = req.cookies.userId,orderId = req.param("orderId");
