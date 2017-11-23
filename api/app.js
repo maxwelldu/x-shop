@@ -12,7 +12,7 @@ app.use(cookieParser());
 app.use(function (req,res,next) {
   console.log("url:"+req.originalUrl);
   //如果已经登录或者是登录接口或者是首页商品列表则放行
-  if(req.cookies.userId || req.originalUrl === '/users/login' || req.originalUrl.indexOf('/goods/list')>-1){
+  if(req.cookies.userId || req.originalUrl === '/users/login' || req.originalUrl === '/users/register' || req.originalUrl.indexOf('/goods/list')>-1 || req.originalUrl.indexOf('/goods/detail')>-1){
     next();
   }else{
     return res.json({

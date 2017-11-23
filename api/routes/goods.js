@@ -49,6 +49,24 @@ router.get("/list", (req,res,next) => {
   })
 });
 
+router.get('/detail', (req, res) => {
+  let productId = req.param('productId')
+  console.log(productId)
+  Goods.findOne({ productId }, (err, doc) => {
+    if (err) {
+      return res.json({
+        status: '1',
+        msg: 'err'
+      })
+    }
+    console.log(doc)
+    res.json({
+      status: '0',
+      result: doc
+    })
+  })
+})
+
 //2.加入到购物车
 router.post("/addCart", (req,res,next) => {
   let userId = req.cookies.userId, productId = req.body.productId;

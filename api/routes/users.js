@@ -3,13 +3,32 @@ let router = express.Router();
 let User = require('./../models/user');
 let sd = require('silly-datetime');
 
+router.post('/register', (req, res) => {
+  let userId = 100000000 + parseInt(Math.random() * 999999999)
+  let user = {
+    userId,
+    userName: req.body.userName,
+    userPwd: req.body.userPwd
+  }
+  User.create(user, (err, doc) => {
+    if (err) {
+      return res.json({
+        status: '1',
+        msg: '注册用户失败'
+      })
+    }
+    res.json({
+      status: '0',
+      msg: '用户注册成功'
+    })
+  })
+})
 //1.登录接口
 router.post("/login", (req,res,next) => {
   let param = {
     userName:req.body.userName,//获取用户名
     userPwd:req.body.userPwd//获取密码
   }
-  console.log(param);
   //查找用户
   User.findOne(param, (err,doc) => {
     if(err){

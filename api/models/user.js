@@ -2,8 +2,8 @@ let mongoose = require('../db');
 
 let userSchema = new mongoose.Schema({
   "userId":String,            //用户ID
-  "userName":String,          //用户名
-  "userPwd":String,           //用户密码
+  "userName": { type: String, required: true },          //用户名
+  "userPwd": { type: String, required: true },           //用户密码
   "orderList":Array,          //订单列表
   "cartList":[                //购物车列表
     {

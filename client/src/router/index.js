@@ -3,6 +3,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // 引入商品列表组件
 import GoodsList from '@/pages/GoodsList'
+// 引入商品详情页
+import GoodsDetail from '@/pages/GoodsDetail'
 // 引入购物车组件
 import Cart from '@/pages/Cart'
 // 引入地址组件
@@ -22,6 +24,11 @@ export default new Router({
       path: '/',
       name: 'Index',
       component: GoodsList
+    },
+    {
+      path: '/detail/:productId',
+      name: 'Detail',
+      component: GoodsDetail
     },
     {
       path: '/cart',

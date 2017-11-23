@@ -27,7 +27,7 @@
             <div class="accessory-list-wrap">
               <div class="accessory-list col-4">
                 <ul>
-                  <li v-for="item in goodsList">
+                  <li v-for="item in goodsList" @click="goDetail(item.productId)">
                     <div class="pic">
                       <a href="#"><img v-lazy="'static/'+item.productImage" alt=""></a>
                     </div>
@@ -35,7 +35,7 @@
                       <div class="name">{{item.productName}}</div>
                       <div class="price">{{item.salePrice | currency('￥')}}</div>
                       <div class="btn-area">
-                        <a href="javascript:;" class="btn btn--m" @click="addCart(item.productId)">加入购物车</a>
+                        <a href="javascript:;" class="btn btn--m" @click.self.stop="addCart(item.productId)">加入购物车</a>
                       </div>
                     </div>
                   </li>
@@ -146,6 +146,11 @@ export default {
             this.busy = false
           }
         }
+      })
+    },
+    goDetail(productId) {
+      this.$router.push({
+        path: `/detail/${productId}`
       })
     },
     sortGoods () {

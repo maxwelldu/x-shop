@@ -29,6 +29,7 @@
       <div class="navbar-right-container" style="display: flex;">
         <div class="navbar-menu-container">
           <span class="navbar-link" v-text="nickName" v-if="nickName"></span>
+          <a href="javascript:void(0)" class="navbar-link" @click="registerModalFlag=true" v-if="!nickName">注册</a>
           <a href="javascript:void(0)" class="navbar-link" @click="loginModalFlag=true" v-if="!nickName">登录</a>
           <a href="javascript:void(0)" class="navbar-link" @click="logOut" v-else>退出</a>
           <div class="navbar-cart-container">
@@ -70,6 +71,32 @@
         </div>
       </div>
     </div>
+
+    <div class="md-modal modal-msg md-modal-transition" v-bind:class="{'md-show':registerModalFlag}">
+      <div class="md-modal-inner">
+        <div class="md-top">
+          <div class="md-title">注册</div>
+          <button class="md-close" @click="registerModalFlag=false">Close</button>
+        </div>
+        <div class="md-content">
+          <div class="confirm-tips">
+            <ul>
+              <li class="regi_form_input">
+                <i class="icon IconPeople"></i>
+                <input type="text" tabindex="1" name="loginname" v-model="register.userName" class="regi_login_input regi_login_input_left" placeholder="用户名" data-type="loginname">
+              </li>
+              <li class="regi_form_input noMargin">
+                <i class="icon IconPwd"></i>
+                <input type="password" tabindex="2"  name="password" v-model="register.userPwd" class="regi_login_input regi_login_input_left login-input-no input_text" placeholder="密码" @keyup.enter="regis">
+              </li>
+            </ul>
+          </div>
+          <div class="login-wrap">
+            <a href="javascript:;" class="btn-login" @click="regis">注  册</a>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="md-overlay" v-if="loginModalFlag" @click="loginModalFlag=false"></div>
   </header>
 </template>
@@ -84,7 +111,12 @@ export default{
       userName: 'admin',
       userPwd: '123456',
       errorTip: false,
-      loginModalFlag: false
+      loginModalFlag: false,
+      registerModalFlag: false,
+      register: {
+        userName: '',
+        userPwd: ''
+      }
     }
   },
   computed: {
@@ -105,6 +137,16 @@ export default{
           if (this.$route.path !== '/') {
             this.$router.push('/')
           }
+        }
+      })
+    },
+    regis () {
+      this.$http.post('/users/register', this.register)
+      .then(res => {
+        res = res.data
+        if (res.status === '0') {
+          this.registerModalFlag = false
+          this.loginModalFlag = true
         }
       })
     },
