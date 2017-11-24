@@ -251,7 +251,7 @@ export default {
       this.$http.post('/users/delAddress', { addressId: this.addressId })
       .then(res => {
         res = res.data
-        if ('0' === res.status) {
+        if (res.status === '0') {
           this.closeModal()
           // 优化的话直接删除
           this.init()

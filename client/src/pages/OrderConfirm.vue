@@ -153,7 +153,7 @@ export default {
         this.cartList = res.result
 
         this.cartList.forEach(item => {
-          if (item.checked === "1") {
+          if (item.checked === '1') {
             this.subTotal += item.salePrice * item.productNum
           }
         })

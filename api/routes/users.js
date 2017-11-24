@@ -367,6 +367,12 @@ router.post("/payMent", (req,res,next) => {
        goodsList.push(item);
      }
     });
+    // 删除购物车中已选中的商品
+    for (let i = doc.cartList.length-1; i >= 0; i--) {
+      if (doc.cartList[i].checked === '1') {
+        doc.cartList.splice(i, 1)
+      }
+    }
 
     let platform = '622';
     let r1 = Math.floor(Math.random()*10);

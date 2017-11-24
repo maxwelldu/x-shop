@@ -148,7 +148,7 @@ export default {
         }
       })
     },
-    goDetail(productId) {
+    goDetail (productId) {
       this.$router.push({
         path: `/detail/${productId}`
       })
